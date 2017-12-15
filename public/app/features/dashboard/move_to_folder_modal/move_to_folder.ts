@@ -6,6 +6,7 @@ export class MoveToFolderCtrl {
   folder: any;
   dismiss: any;
   afterSave: any;
+  isValidFolderSelection = true;
 
   /** @ngInject */
   constructor(private backendSrv) { }

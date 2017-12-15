@@ -22,13 +22,15 @@ const  template = `
       <div class="gf-form">
         <folder-picker initial-folder-id="ctrl.folderId"
                        on-change="ctrl.onFolderChange($folder)"
+                       enable-create-new="true"
+                       is-valid-selection="ctrl.isValidFolderSelection"
                        label-class="width-7">
         </folder-picker>
       </div>
 		</div>
 
 		<div class="gf-form-button-row text-center">
-			<button type="submit" class="btn btn-success" ng-disabled="ctrl.saveForm.$invalid">Save</button>
+			<button type="submit" class="btn btn-success" ng-disabled="ctrl.saveForm.$invalid || !ctrl.isValidFolderSelection">Save</button>
 			<a class="btn-text" ng-click="ctrl.dismiss();">Cancel</a>
 		</div>
 	</form>
@@ -38,6 +40,7 @@ const  template = `
 export class SaveDashboardAsModalCtrl {
   clone: any;
   folderId: any;
+  isValidFolderSelection: any;
   dismiss: () => void;
 
   /** @ngInject */
@@ -75,6 +78,7 @@ export class SaveDashboardAsModalCtrl {
   }
 
   onFolderChange(folder) {
+    console.log(folder);
     this.clone.folderId = folder.id;
   }
 }

@@ -32,7 +32,7 @@ export class CreateFolderCtrl {
     this.backendSrv.search({query: this.title}).then(res => {
       this.nameExists = false;
       for (let hit of res) {
-        if (this.title === hit.title) {
+        if (this.title.toLowerCase() === hit.title.toLowerCase()) {
           this.nameExists = true;
           break;
         }
